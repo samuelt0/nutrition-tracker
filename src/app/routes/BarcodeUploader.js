@@ -3,6 +3,7 @@ import { useDropzone } from 'react-dropzone';
 import { BrowserMultiFormatReader } from '@zxing/library';
 import axios from 'axios';
 import './BarcodeUploader.css';
+import DailyFoodTracker from '../../components/DailyFoodTracker';
 
 const BarcodeUploader = () => {
   const [barcode, setBarcode] = useState('');
@@ -11,6 +12,7 @@ const BarcodeUploader = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [trackerVisible, setTrackerVisible] = useState(false);
 
   const fetchNutritionData = async (barcode) => {
     const APP_ID = 'e2cd24d8';
@@ -52,6 +54,25 @@ const BarcodeUploader = () => {
       console.error('Error fetching nutrition data', error);
       setError('Failed to fetch nutrition data');
       return null;
+    }
+  };
+
+  const addToTracker = async (quantity) => {
+    try {
+      const response = await axios.post('/api/tracker/add', {
+        barcode,
+        nutrition,
+        quantity,
+      });
+
+      if (response.status === 200) {
+        console.log('Food added to tracker');
+        setTrackerVisible(false);
+      } else {
+        console.error('Failed to add food to tracker');
+      }
+    } catch (error) {
+      console.error('Error adding food to tracker', error);
     }
   };
 
@@ -149,6 +170,9 @@ const BarcodeUploader = () => {
               </tr>
             </tbody>
           </table>
+          <button className="add-to-tracker-button" onClick={() => setTrackerVisible(true)}>
+            Add to Tracker
+          </button>
         </div>
       )}
       {modalVisible && (
@@ -158,6 +182,14 @@ const BarcodeUploader = () => {
             <p>{error}</p>
           </div>
         </div>
+      )}
+      {trackerVisible && (
+        <DailyFoodTracker
+          onClose={() => setTrackerVisible(false)}
+          addToTracker={addToTracker}
+          foodName={barcode}
+          nutrition={nutrition}
+        />
       )}
     </div>
   );

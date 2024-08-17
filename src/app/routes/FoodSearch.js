@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './FoodSearch.css';
+import DailyFoodTracker from '../../components/DailyFoodTracker';
 
 const FoodSearch = () => {
   const [query, setQuery] = useState('');
@@ -9,6 +10,7 @@ const FoodSearch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [modalVisible, setModalVisible] = useState(false);
+  const [trackerVisible, setTrackerVisible] = useState(false);
 
   const fetchNutritionData = async (query) => {
     const APP_ID = 'e2cd24d8';
@@ -25,7 +27,7 @@ const FoodSearch = () => {
       if (response.data && response.data.hints && response.data.hints.length > 0) {
         const food = response.data.hints[0].food || {};
         const nutrients = food.nutrients || {};
-        console.log("Nutrients:", nutrients);
+        console.log('Nutrients:', nutrients);
 
         const formatValue = (value) => {
           const roundedValue = value ? parseFloat(value).toFixed(2) : 0;
@@ -67,6 +69,12 @@ const FoodSearch = () => {
 
     const nutritionData = await fetchNutritionData(query);
     setNutrition(nutritionData);
+  };
+
+  const handleAddToTracker = () => {
+    if (nutrition) {
+      setTrackerVisible(true);
+    }
   };
 
   return (
@@ -125,6 +133,9 @@ const FoodSearch = () => {
               </tr>
             </tbody>
           </table>
+          <button className="add-to-tracker-button" onClick={handleAddToTracker}>
+            Add to Tracker
+          </button>
         </div>
       )}
       {modalVisible && (
@@ -134,6 +145,13 @@ const FoodSearch = () => {
             <p>{error}</p>
           </div>
         </div>
+      )}
+      {trackerVisible && (
+        <DailyFoodTracker
+          nutrition={nutrition}
+          foodName={foodName}
+          onClose={() => setTrackerVisible(false)}
+        />
       )}
     </div>
   );
