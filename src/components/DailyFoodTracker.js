@@ -18,7 +18,7 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
     const multipliedNutrition = {
       calories: (Number(nutrition.calories) || 0) * quantity,
       protein: (Number(nutrition.protein) || 0) * quantity,
-      carbohydrates: (Number(nutrition.carbohydrates) || 0) * quantity,
+      carbohydrates: (Number(nutrition.carbs) || 0) * quantity,
       fats: (Number(nutrition.fats) || 0) * quantity,
       sugar: (Number(nutrition.sugar) || 0) * quantity,
       cholesterol: (Number(nutrition.cholesterol) || 0) * quantity,
@@ -32,12 +32,12 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
         calories: multipliedNutrition.calories,
         protein: multipliedNutrition.protein,
         fats: multipliedNutrition.fats,
-        carbohydrates: multipliedNutrition.carbohydrates,
+        carbohydrates: multipliedNutrition.carbs,
         sugar: multipliedNutrition.sugar,
         cholesterol: multipliedNutrition.cholesterol,
-        totalMacros: multipliedNutrition.calories + multipliedNutrition.protein + multipliedNutrition.fats + multipliedNutrition.carbohydrates + multipliedNutrition.sugar + multipliedNutrition.cholesterol,
+        totalMacros: multipliedNutrition.calories + multipliedNutrition.protein + multipliedNutrition.fats + multipliedNutrition.carbs + multipliedNutrition.sugar + multipliedNutrition.cholesterol,
       });
-
+      
       if (response.status === 200) {
         setSuccessMessage('Food item successfully added to your tracker!');
       } else {
@@ -59,7 +59,7 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
         <ul>
           <li>Calories: {nutrition ? (nutrition.calories * quantity).toFixed(2) : 0} kcal</li>
           <li>Protein: {nutrition ? (nutrition.protein * quantity).toFixed(2) : 0} g</li>
-          <li>Carbs: {nutrition ? (nutrition.carbohydrates * quantity).toFixed(2) : 0} g</li>
+          <li>Carbs: {nutrition ? (nutrition.carbs * quantity).toFixed(2) : 0} g</li>
           <li>Fats: {nutrition ? (nutrition.fats * quantity).toFixed(2) : 0} g</li>
           <li>Sugar: {nutrition ? (nutrition.sugar * quantity).toFixed(2) : 0} g</li>
           <li>Cholesterol: {nutrition ? (nutrition.cholesterol * quantity).toFixed(2) : 0} mg</li>

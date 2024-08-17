@@ -15,8 +15,8 @@ const BarcodeUploader = () => {
   const [trackerVisible, setTrackerVisible] = useState(false);
 
   const fetchNutritionData = async (barcode) => {
-    const APP_ID = 'e2cd24d8';
-    const APP_KEY = 'b90cf2c69f6cccaf4e452b75907d1141';
+    const APP_ID = process.env.REACT_APP_APP_ID;
+    const APP_KEY = process.env.REACT_APP_APP_KEY;
     const url = `https://api.edamam.com/api/food-database/v2/parser?upc=${barcode}&app_id=${APP_ID}&app_key=${APP_KEY}`;
 
     console.log('Fetching data from URL:', url);
