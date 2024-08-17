@@ -8,36 +8,48 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
   const [error, setError] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
 
+  const handleQuantityChange = (e) => {
+    const value = e.target.value;
+    if (value === '') {
+      setQuantity(''); // Allow the field to be empty
+    } else {
+      const number = Number(value);
+      if (!isNaN(number) && number > 0) {
+        setQuantity(number);
+      } else {
+        setQuantity(1); // Reset to 1 if an invalid number is entered
+      }
+    }
+  };
+
   const handleAddToTracker = async () => {
     if (!nutrition) {
       setError('No nutrition data available to add');
       return;
     }
 
-    // Ensure all nutrition fields are numbers and set default values if undefined
     const multipliedNutrition = {
-      calories: (Number(nutrition.calories) || 0) * quantity,
-      protein: (Number(nutrition.protein) || 0) * quantity,
-      carbohydrates: (Number(nutrition.carbs) || 0) * quantity,
-      fats: (Number(nutrition.fats) || 0) * quantity,
-      sugar: (Number(nutrition.sugar) || 0) * quantity,
-      cholesterol: (Number(nutrition.cholesterol) || 0) * quantity,
+      calories: (Number(nutrition.calories) || 0) * (quantity || 1),
+      protein: (Number(nutrition.protein) || 0) * (quantity || 1),
+      carbohydrates: (Number(nutrition.carbs) || 0) * (quantity || 1),
+      fats: (Number(nutrition.fats) || 0) * (quantity || 1),
+      sugar: (Number(nutrition.sugar) || 0) * (quantity || 1),
+      cholesterol: (Number(nutrition.cholesterol) || 0) * (quantity || 1),
     };
 
     try {
       const response = await axios.post('http://localhost:8080/api/fooditems', {
         name: foodName,
-        mealType,
-        quantity,
+        mealtime: mealType, // Changed to mealtime
+        quantity: quantity,
         calories: multipliedNutrition.calories,
         protein: multipliedNutrition.protein,
         fats: multipliedNutrition.fats,
-        carbohydrates: multipliedNutrition.carbs,
+        carbohydrates: multipliedNutrition.carbohydrates,
         sugar: multipliedNutrition.sugar,
         cholesterol: multipliedNutrition.cholesterol,
-        totalMacros: multipliedNutrition.calories + multipliedNutrition.protein + multipliedNutrition.fats + multipliedNutrition.carbs + multipliedNutrition.sugar + multipliedNutrition.cholesterol,
       });
-      
+
       if (response.status === 200) {
         setSuccessMessage('Food item successfully added to your tracker!');
       } else {
@@ -57,12 +69,12 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
         <p><strong>Food:</strong> {foodName}</p>
         <p><strong>Nutrients:</strong></p>
         <ul>
-          <li>Calories: {nutrition ? (nutrition.calories * quantity).toFixed(2) : 0} kcal</li>
-          <li>Protein: {nutrition ? (nutrition.protein * quantity).toFixed(2) : 0} g</li>
-          <li>Carbs: {nutrition ? (nutrition.carbs * quantity).toFixed(2) : 0} g</li>
-          <li>Fats: {nutrition ? (nutrition.fats * quantity).toFixed(2) : 0} g</li>
-          <li>Sugar: {nutrition ? (nutrition.sugar * quantity).toFixed(2) : 0} g</li>
-          <li>Cholesterol: {nutrition ? (nutrition.cholesterol * quantity).toFixed(2) : 0} mg</li>
+          <li>Calories: {nutrition ? (nutrition.calories * (quantity || 1)).toFixed(2) : 0} kcal</li>
+          <li>Protein: {nutrition ? (nutrition.protein * (quantity || 1)).toFixed(2) : 0} g</li>
+          <li>Carbs: {nutrition ? (nutrition.carbs * (quantity || 1)).toFixed(2) : 0} g</li>
+          <li>Fats: {nutrition ? (nutrition.fats * (quantity || 1)).toFixed(2) : 0} g</li>
+          <li>Sugar: {nutrition ? (nutrition.sugar * (quantity || 1)).toFixed(2) : 0} g</li>
+          <li>Cholesterol: {nutrition ? (nutrition.cholesterol * (quantity || 1)).toFixed(2) : 0} mg</li>
         </ul>
         <label htmlFor="mealType">Meal Type:</label>
         <select id="mealType" value={mealType} onChange={(e) => setMealType(e.target.value)}>
@@ -77,7 +89,7 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
           id="quantity"
           value={quantity}
           min="1"
-          onChange={(e) => setQuantity(Number(e.target.value))}
+          onChange={handleQuantityChange}
         />
         <button onClick={handleAddToTracker}>Add to Tracker</button>
         {error && <p className="error-message">{error}</p>}
