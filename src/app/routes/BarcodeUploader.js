@@ -118,7 +118,7 @@ const BarcodeUploader = () => {
 
   return (
     <div className="container">
-      <h3>Upload a Barcode Image</h3>
+      <h3>Upload a Barcode</h3>
       <div {...getRootProps()} className="dropzone">
         <input {...getInputProps()} />
         <p>Click to select an image</p>
