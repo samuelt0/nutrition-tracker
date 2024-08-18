@@ -123,7 +123,7 @@ const BarcodeUploader = () => {
         <input {...getInputProps()} />
         <p>Click to select an image</p>
       </div>
-      {imageSrc && <img src={imageSrc} alt="Uploaded preview" />}
+      {imageSrc && <img src={imageSrc} alt="Uploaded preview" className="barcode-preview" />}
       <h4>Barcode: {barcode}</h4>
       {loading && <p>Loading...</p>}
       {error && <p>{error}</p>}

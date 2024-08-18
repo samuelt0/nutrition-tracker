@@ -1,0 +1,47 @@
+.landing-page {
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+    font-family: Arial, sans-serif;
+  }
+  
+  .landing-page h1 {
+    color: #333;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+  }
+  
+  .landing-page p {
+    font-size: 1.2rem;
+    color: #666;
+  }
+  
+  .landing-page .button-container {
+    margin-top: 30px;
+  }
+  
+  .landing-page .button {
+    display: inline-block;
+    padding: 15px 25px;
+    margin: 10px;
+    font-size: 1.1rem;
+    color: #fff;
+    background-color: #007bff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .landing-page .button:hover {
+    background-color: #0056b3;
+  }
+  
+  .landing-page .button:active {
+    background-color: #003d7a;
+  }
+  
+  .landing-page .button.disabled {
+    background-color: #c0c0c0;
+    cursor: not-allowed;
+  }
+  
