@@ -99,7 +99,7 @@ const FoodPhoto = () => {
   };
 
   const handleConfirmUpload = async () => {
-    setSuccessMessage('File confirmed and sent for processing!');
+    setSuccessMessage('File confirmed! Please wait for processing');
     setView('main');
     setImageSrc(null); // Clear the uploaded image after confirmation
     setImageFile(null);

@@ -1,14 +1,14 @@
 body {
     background: linear-gradient(135deg, #e0f7fa, #80deea);
-    font-family: 'Poppins', sans-serif; 
+    font-family: 'Poppins', sans-serif;
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh; /* Changed from height to min-height */
     display: flex;
     align-items: center;
     justify-content: center;
+    overflow: auto; /* Ensure body can scroll */
 }
-
 
 .container {
     max-width: 800px;
@@ -21,7 +21,6 @@ body {
     overflow: auto; 
     text-align: center; 
 }
-
 
 input[type="text"] {
     width: calc(100% - 20px);
@@ -39,7 +38,6 @@ input[type="text"]:focus {
     border-color: #4a00e0;
     transform: scale(1.02); 
 }
-
 
 button {
     width: calc(100% - 20px); 
@@ -59,7 +57,6 @@ button:hover {
     background: #4a00e0;
     transform: scale(1.05); 
 }
-
 
 table {
     width: 100%;
@@ -90,7 +87,6 @@ tbody tr:hover {
     background: #e0e0e0;
 }
 
-
 .modal {
     position: fixed;
     inset: 0;
@@ -118,7 +114,6 @@ tbody tr:hover {
     cursor: pointer;
     color: #333;
 }
-
 
 .search-result img {
     display: block;

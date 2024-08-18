@@ -5,10 +5,10 @@ import FoodSearch from './app/routes/FoodSearch';
 import FoodPhoto from './app/routes/FoodPhoto';
 import LandingPage from './app/routes/LandingPage';
 import NotFound from './app/routes/NotFound';
-import DailyFoodTracker from './components/DailyFoodTracker';
+import ViewTracker from './app/routes/ViewTracker';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-import Footer from './components/Footer';
+//import Footer from './components/Footer';
 
 function App() {
   return (
@@ -20,11 +20,11 @@ function App() {
           <Route path="/barcode" element={<BarcodeUploader />} />
           <Route path="/search" element={<FoodSearch />} />
           <Route path="/photo" element={<FoodPhoto />} />
-          <Route path="/dailytracker" element={<DailyFoodTracker />} /> 
+          <Route path="/tracker" element={<ViewTracker />} /> 
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      
     </Router>
   );
 }

@@ -27,7 +27,7 @@ const FoodSearch = () => {
       if (response.data && response.data.hints && response.data.hints.length > 0) {
         const food = response.data.hints[0].food || {};
         const nutrients = food.nutrients || {};
-        console.log('Nutrients:', nutrients);
+        console.log('Nutrients:', nutrients.FAT);
 
         const formatValue = (value) => {
           const roundedValue = value ? parseFloat(value).toFixed(2) : 0;

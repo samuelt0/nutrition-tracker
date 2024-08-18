@@ -44,7 +44,7 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
         quantity: quantity,
         calories: multipliedNutrition.calories,
         protein: multipliedNutrition.protein,
-        fats: multipliedNutrition.fats,
+        fat: multipliedNutrition.fats,
         carbohydrates: multipliedNutrition.carbohydrates,
         sugar: multipliedNutrition.sugar,
         cholesterol: multipliedNutrition.cholesterol,

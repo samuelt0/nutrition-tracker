@@ -1,0 +1,66 @@
+.view-tracker-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    min-height: 100vh; /* Ensure it can expand to at least the viewport height */
+}
+
+.totals {
+    background-color: #f8f8f8;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.totals h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.2em;
+}
+
+.meals-container {
+    margin-top: 20px;
+}
+
+.meal-section {
+    margin-bottom: 15px;
+}
+
+.meal-section h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.meal-section ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.meal-section li {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.meal-section li span:first-child {
+    flex-grow: 1;
+}
+
+.meal-section button {
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.meal-section button:hover {
+    background-color: #ff4d4d;
+}
