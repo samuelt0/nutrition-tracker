@@ -1,11 +1,10 @@
-/* Header.css */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background-color: rgb(45, 152, 214);
-  color: black;
+  background-color: #3c3744;
+  color: #ffff;
   position: fixed;
   top: 0;
   left: 0;
