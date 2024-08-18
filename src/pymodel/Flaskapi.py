@@ -8,13 +8,12 @@ import json
 import io
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app) 
 
-model_path = './EffNetFood.keras'  # Update this path if needed
+model_path = './EffNetFood.keras' 
 model = tf.keras.models.load_model(model_path)
 
 def load_and_preprocess_image(img_bytes):
-    # Load image from BytesIO object
     img = image.load_img(img_bytes, target_size=(380, 380))
     img_array = image.img_to_array(img)
     img_array = np.expand_dims(img_array, axis=0)
@@ -31,7 +30,6 @@ def predict():
         return jsonify({'error': 'No selected file'}), 400
     
     try:
-        # Convert FileStorage to BytesIO
         img_bytes = io.BytesIO(file.read())
         img_array = load_and_preprocess_image(img_bytes)
         predictions = model.predict(img_array)

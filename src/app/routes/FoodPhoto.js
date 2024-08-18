@@ -4,12 +4,12 @@ import DailyFoodTracker from '../../components/DailyFoodTracker';
 import './FoodPhoto.css';
 
 const FoodPhoto = () => {
-  const [view, setView] = useState('main'); // 'main', 'takePhoto', 'confirmPhoto', 'uploadPhoto', 'confirmUpload'
+  const [view, setView] = useState('main');
   const [imageSrc, setImageSrc] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
   const [error, setError] = useState('');
-  const [nutrition, setNutrition] = useState(null); // Add state for nutrition data
-  const [foodLabel, setFoodLabel] = useState(''); // State for food label
+  const [nutrition, setNutrition] = useState(null);
+  const [foodLabel, setFoodLabel] = useState('');
   const [imageFile, setImageFile] = useState(null);
   const [trackerVisible, setTrackerVisible] = useState(false);
   const videoRef = useRef(null);
@@ -47,10 +47,10 @@ const FoodPhoto = () => {
   const handleConfirmPhoto = async () => {
     setSuccessMessage('Photo confirmed and sent for processing!');
     setView('main');
-    setImageSrc(null); // Clear the photo after confirmation
+    setImageSrc(null);
     setError('');
 
-    // Convert base64 image to Blob
+  
     try {
       const response = await fetch(imageSrc);
       const blob = await response.blob();
@@ -61,17 +61,17 @@ const FoodPhoto = () => {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
-      // Log the predicted label
+    
       const predictedLabel = res.data.label;
       console.log(`Predicted Label: ${predictedLabel}`);
       setFoodLabel(predictedLabel);
 
       // Fetch nutrition data
       const nutritionData = await fetchNutritionData(predictedLabel);
-      console.log('Nutrition Data:', nutritionData); // Print nutrition data
+      console.log('Nutrition Data:', nutritionData); 
       setNutrition(nutritionData);
 
-      // Show the DailyFoodTracker pop-up
+      
       setTrackerVisible(true);
     } catch (error) {
       setError('Failed to process the photo');
@@ -81,7 +81,7 @@ const FoodPhoto = () => {
 
   const handleCancelPhoto = () => {
     setView('main');
-    setImageSrc(null); // Clear the photo when canceling
+    setImageSrc(null);
     setError('');
   };
 
@@ -101,11 +101,11 @@ const FoodPhoto = () => {
   const handleConfirmUpload = async () => {
     setSuccessMessage('File confirmed! Please wait for processing');
     setView('main');
-    setImageSrc(null); // Clear the uploaded image after confirmation
+    setImageSrc(null);
     setImageFile(null);
     setError('');
 
-    // Send file to Flask API
+    // Send to Flask API
     try {
       const formData = new FormData();
       formData.append('file', imageFile);
@@ -114,17 +114,12 @@ const FoodPhoto = () => {
         headers: { 'Content-Type': 'multipart/form-data' }
       });
 
-      // Log the predicted label
+
       const predictedLabel = res.data.label;
-      console.log(`Predicted Label: ${predictedLabel}`);
       setFoodLabel(predictedLabel);
 
-      // Fetch nutrition data
       const nutritionData = await fetchNutritionData(predictedLabel);
-      console.log('Nutrition Data:', nutritionData); // Print nutrition data
       setNutrition(nutritionData);
-
-      // Show the DailyFoodTracker pop-up
       setTrackerVisible(true);
     } catch (error) {
       setError('Failed to process the uploaded file');
@@ -134,7 +129,7 @@ const FoodPhoto = () => {
 
   const handleCancelUpload = () => {
     setView('uploadPhoto');
-    setImageSrc(null); // Clear the uploaded image when canceling
+    setImageSrc(null);
     setError('');
   };
 
@@ -143,7 +138,7 @@ const FoodPhoto = () => {
     setError('');
   };
 
-  // Function to fetch nutrition data
+  //fetch nutrition data
   const fetchNutritionData = async (foodLabel) => {
     const APP_ID = process.env.REACT_APP_APP_ID;
     const APP_KEY = process.env.REACT_APP_APP_KEY;
@@ -182,11 +177,7 @@ const FoodPhoto = () => {
     }
   };
 
-  // Function to handle adding food to the tracker
   const addToTracker = (foodItem) => {
-    console.log('Adding to tracker:', foodItem);
-    // Here you can add the logic to save foodItem to your backend or local state
-    // For now, we'll just close the tracker pop-up
     setTrackerVisible(false);
   };
 

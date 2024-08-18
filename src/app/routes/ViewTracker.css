@@ -3,19 +3,28 @@
     max-width: 800px;
     margin: 0 auto;
     font-family: Arial, sans-serif;
-    min-height: 100vh; /* Ensure it can expand to at least the viewport height */
+    min-height: 100vh;
+}
+
+.main-header {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
 }
 
 .totals {
     background-color: #f8f8f8;
-    padding: 15px;
+    padding: 20px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .totals h3 {
     margin: 0 0 10px 0;
-    font-size: 1.2em;
+    font-size: 1.5em;
+    color: #333;
 }
 
 .meals-container {
@@ -23,32 +32,51 @@
 }
 
 .meal-section {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
 }
 
 .meal-section h2 {
     font-size: 1.5em;
     color: #333;
-    margin: 10px 0;
+    margin-bottom: 15px;
 }
 
 .meal-section ul {
     list-style-type: none;
     padding-left: 0;
+    margin: 0;
 }
 
-.meal-section li {
+.meal-item {
     background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.meal-section li span:first-child {
+.meal-details {
     flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.meal-name {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.meal-nutrition {
+    font-size: 0.9rem;
+    color: #555;
 }
 
 .meal-section button {

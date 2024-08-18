@@ -42,7 +42,7 @@ const ViewTracker = () => {
       },
       { calories: 0, protein: 0, fats: 0, carbohydrates: 0, sugar: 0, cholesterol: 0 }
     );
-    
+
     setTotals({
       calories: totals.calories.toFixed(2),
       protein: totals.protein.toFixed(2),
@@ -65,7 +65,6 @@ const ViewTracker = () => {
 
   const renderMealType = (mealType) => {
     const filteredItems = foodItems.filter(item => item.mealtime === mealType);
-    console.log(`Rendering ${mealType} meal type with items:`, filteredItems); // Debugging line
     if (filteredItems.length === 0) return null;
 
     return (
@@ -73,9 +72,23 @@ const ViewTracker = () => {
         <h2>{mealType.charAt(0).toUpperCase() + mealType.slice(1)}</h2>
         <ul>
           {filteredItems.map((item) => (
-            <li key={item.id}>
-              <span>{item.name}</span>
-              <span>{(item.calories * item.quantity).toFixed(2)} calories, {(item.protein * item.quantity).toFixed(2)}g protein, {(item.fat * item.quantity).toFixed(2)}g fats, {(item.carbohydrates * item.quantity).toFixed(2)}g carbohydrates, {(item.sugar * item.quantity).toFixed(2)}g sugar, {(item.cholesterol * item.quantity).toFixed(2)}mg cholesterol</span>
+            <li key={item.id} className="meal-item">
+              <div className="meal-details">
+                <span className="meal-name">{item.name}</span>
+                <span className="meal-nutrition">
+                  {`${(item.calories * item.quantity).toFixed(2)} kcal, ${(
+                    item.protein * item.quantity
+                  ).toFixed(2)}g protein, ${(
+                    item.fat * item.quantity
+                  ).toFixed(2)}g fats, ${(
+                    item.carbohydrates * item.quantity
+                  ).toFixed(2)}g carbohydrates, ${(
+                    item.sugar * item.quantity
+                  ).toFixed(2)}g sugar, ${(
+                    item.cholesterol * item.quantity
+                  ).toFixed(2)}mg cholesterol`}
+                </span>
+              </div>
               <button onClick={() => handleDelete(item.id)}>Delete</button>
             </li>
           ))}
@@ -86,7 +99,7 @@ const ViewTracker = () => {
 
   return (
     <div className="view-tracker-container">
-      <h1>Daily Food Tracker</h1>
+      <h1 className="main-header">Daily Food Tracker</h1>
       <div className="totals">
         <h3>Total Nutrients for Today</h3>
         <p>Calories: {totals.calories} kcal</p>

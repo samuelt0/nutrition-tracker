@@ -11,13 +11,13 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
   const handleQuantityChange = (e) => {
     const value = e.target.value;
     if (value === '') {
-      setQuantity(''); // Allow the field to be empty
+      setQuantity('');
     } else {
       const number = Number(value);
       if (!isNaN(number) && number > 0) {
         setQuantity(number);
       } else {
-        setQuantity(1); // Reset to 1 if an invalid number is entered
+        setQuantity(1);
       }
     }
   };
@@ -40,7 +40,7 @@ const DailyFoodTracker = ({ nutrition, foodName, onClose }) => {
     try {
       const response = await axios.post('http://localhost:8080/api/fooditems', {
         name: foodName,
-        mealtime: mealType, // Changed to mealtime
+        mealtime: mealType,
         quantity: quantity,
         calories: multipliedNutrition.calories,
         protein: multipliedNutrition.protein,

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const APP_ID = 'e2cd24d8';
-const APP_KEY = 'b90cf2c69f6cccaf4e452b75907d1141';
+const APP_ID = process.env.REACT_APP_APP_ID;
+const APP_KEY = process.env.REACT_APP_APP_KEY;
 
 export const fetchNutritionData = async (barcode) => {
   const url = `https://api.edamam.com/api/food-database/v2/parser?upc=${barcode}&app_id=${APP_ID}&app_key=${APP_KEY}`;
@@ -11,6 +11,6 @@ export const fetchNutritionData = async (barcode) => {
   } catch (error) {
     console.error('Error fetching nutrition data', error);
     return null;
-  }
+  } 
 };
 

@@ -10,10 +10,10 @@ const LandingPage = () => {
 
   return (
     <div>
-      <h1>Welcome to the Food Tracker App</h1>
+      <h1 style={{ marginTop: '-200px' }}>Welcome to the NutriTracker App</h1>
       <nav>
       </nav>
-      <button onClick={handleViewTracker}>View Daily Food Tracker</button>
+      <button onClick={handleViewTracker}>View Food Tracker</button>
     </div>
   );
 };

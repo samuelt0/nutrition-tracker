@@ -3,13 +3,13 @@
   padding: 50px;
   background-color: #f9f9f9;
   font-family: Arial, sans-serif;
-  min-height: 100vh; /* Ensure it can expand to at least the viewport height */
+  min-height: 100vh;
 }
 
 .landing-page h1 {
   color: #333;
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  margin: 20px;
 }
 
 .landing-page p {

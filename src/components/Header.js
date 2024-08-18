@@ -1,26 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Header.css'; 
+import './Header.css';
+import homeIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/home.svg';
+import photoIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/camera.svg';
+import searchIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/search.svg';
+import barcodeIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/barcode.png';
 
 const Header = () => {
   return (
-    <header className="header">
-      <nav className="nav">
+    <header className="navbar">
+      <div className="navbar-brand">
+        <h1>NutriTracker</h1>
+      </div>
+      <nav className="navbar-links">
         <Link to="/" className="nav-link">
-          <img src="src/assets/home.svg" alt="Home" className="nav-icon" />
+          <img src={homeIcon} alt="Home" className="nav-icon" />
           Home
         </Link>
         <Link to="/photo" className="nav-link">
-          <img src="src/assets/camera.svg" alt="FoodImg" className="nav-icon" />
+          <img src={photoIcon} alt="Cam" className="nav-icon" />
           Photo
         </Link>
-        <Link to="/barcode" className="nav-link">
-          <img src="src/assets/barcode.png" alt="Barcode" className="nav-icon" />
-          Barcode
-        </Link>
         <Link to="/search" className="nav-link">
-          <img src="src/assets/search.svg" alt="Search" className="nav-icon" />
+          <img src={searchIcon} alt="Search" className="nav-icon" />
           Search
+        </Link>
+        <Link to="/barcode" className="nav-link">
+          <img src={barcodeIcon} alt="Barcode" className="nav-icon" />
+          Barcode
         </Link>
       </nav>
     </header>

@@ -8,7 +8,6 @@ import NotFound from './app/routes/NotFound';
 import ViewTracker from './app/routes/ViewTracker';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
-//import Footer from './components/Footer';
 
 function App() {
   return (
