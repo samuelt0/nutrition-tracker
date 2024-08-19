@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import homeIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/home.svg';
-import photoIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/camera.svg';
-import searchIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/search.svg';
-import barcodeIcon from '/Users/samueltesfai/Documents/projects/nutrition-tracker/src/assets/barcode.png';
+import homeIcon from '../assets/home.svg';
+import photoIcon from '../assets/camera.svg';
+import searchIcon from '../assets/search.svg';
+import barcodeIcon from '../assets/barcode.png';
 
 const Header = () => {
   return (
