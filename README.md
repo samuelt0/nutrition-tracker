@@ -3,7 +3,7 @@
 This repo contains the code for the frontend of my nutrition tracker project.
 
 ## Demo
-Demo will be available in the future.
+https://github.com/user-attachments/assets/fbcbe0f1-6d60-4696-a6db-97ae2cb34ee1
 
 ## Project Description
 
