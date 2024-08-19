@@ -1,1 +1,2 @@
 src/pymodel/EffNetFood.keras filter=lfs diff=lfs merge=lfs -text
+NutriTracker_demo.mov filter=lfs diff=lfs merge=lfs -text
